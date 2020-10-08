@@ -3,17 +3,19 @@ import {connect} from 'react-redux';
 import './App.css';
 import Generator from './components/Generator';
 import Saved from './components/Saved';
-import axios from 'axios';
-
-function App() {
+function App(props) {
   return (
     <div className="App">
-      <h1 style={{textAlign: 'center'}}>RANDOM CAT FACTS!</h1>
+      <h1 style={{textAlign: 'center'}}>{props.isLoading ? 'One moment while we access our massive amazing database' : 'RANDOM CAT FACTS 2000'}</h1>
         <Generator />
         <Saved />
     </div>
   );
 }
+ const mapStateToProps = state => {
+    return {
+      isLoading: state.isLoading,
+    }
+ }
 
-
-export default App;
+export default connect(mapStateToProps, {})(App);

@@ -35,7 +35,7 @@ export const reducer = (state = initialState, action) => {
         case ADD_TO_SAVED:
             return {
                 ...state,
-                saved: [...state.saved, action.payload]
+                saved: [...new Set([...state.saved, action.payload])]
             }
         default:
             return state;
